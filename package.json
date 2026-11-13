@@ -1,0 +1,21 @@
+{
+  "name": "rai-community-happ", "version": "0.4.9", "private": true, "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "check": "tsc --noEmit",
+    "dev": "vite --host 127.0.0.1",
+    "test": "node --test tests/*.test.mjs",
+    "test:network": "node --test tests/network.mjs",
+    "test:peers": "node --test tests/peers.mjs",
+    "test:adversarial": "node --test tests/adversarial.mjs",
+    "test:node": "node --test tests/node-runtime.mjs tests/kit.mjs",
+    "test:desktop": "node tests/native-ui.mjs",
+    "package:node": "node tools/node-kit.mjs",
+    "measure": "node tools/resource-report.mjs",
+    "node": "node ops/node.mjs",
+    "package:windows": "node tools/package-webview2.mjs",
+    "package:windows:electron": "node tools/package-windows.mjs"
+  },
+  "dependencies": { "@holochain/client": "0.21.1" },
+  "devDependencies": { "typescript": "5.9.3", "vite": "7.2.2", "@holochain/hc-spin": "0.700.1" }
+}
