@@ -1,0 +1,14 @@
+manifest_version: "0"
+name: rai-community-pilot
+integrity:
+  network_seed: null
+  properties: null
+  zomes:
+    - name: rai_integrity
+      path: ./zomes/rai_integrity.wasm
+coordinator:
+  zomes:
+    - name: rai_community
+      path: ./zomes/rai_community.wasm
+      dependencies:
+        - name: rai_integrity

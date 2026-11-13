@@ -1,0 +1,14 @@
+manifest_version: "0"
+name: rai-community
+description: Rai Community 0.3. Open community coordination with delegated organizer permissions, channels and hourly hosting RaiUnyt. Fresh network; no data from earlier pilots.
+roles:
+  - name: community
+    provisioning:
+      strategy: create
+      deferred: false
+    dna:
+      path: ./rai-community-pilot.dna
+      modifiers:
+        network_seed: Rai Community-0.3.x
+        properties: null
+      clone_limit: 0

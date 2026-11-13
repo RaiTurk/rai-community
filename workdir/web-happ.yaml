@@ -1,0 +1,6 @@
+manifest_version: "0"
+name: rai-community
+ui:
+  path: ./ui.zip
+happ:
+  path: ./rai-community.happ
