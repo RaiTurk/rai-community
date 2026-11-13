@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Rai Community</title>
+  <link rel="stylesheet" href="startup.css">
+  <script src="startup.js" defer></script>
+</head>
+<body>
+  <button type="button" class="close" id="close" aria-label="Close / Kapat">×</button>
+  <header>
+    <img src="icon.png" width="44" height="44" alt="">
+    <div>
+      <div class="product">Rai Community</div>
+      <div class="version">version {{VERSION}}</div>
+    </div>
+  </header>
+  <main>
+    <p id="recovery-note">This local password protects your device. Keep your separate membership recovery code.<br>
+      Bu yerel parola cihazını korur. Ayrı üyelik kurtarma kodunu sakla.</p>
+    <form id="password-form" hidden autocomplete="off">
+      <section id="choose" hidden>
+        <h1><label for="new-password">Choose a local device password / Yerel cihaz parolası seç</label></h1>
+        <p>Use at least eight characters. / En az sekiz karakter kullan.</p>
+        <input id="new-password" type="password" autocomplete="new-password">
+        <button type="submit" id="continue">Continue / Devam</button>
+      </section>
+      <section id="confirm" hidden>
+        <button type="button" class="back" id="back">‹ Previous step / Önceki adım</button>
+        <h1><label for="confirm-password">Confirm password / Parolayı doğrula</label></h1>
+        <input id="confirm-password" type="password" autocomplete="new-password">
+        <label class="ack"><input id="acknowledged" type="checkbox"> <span>I will keep my membership recovery code.<br>Üyelik kurtarma kodumu saklayacağım.</span></label>
+        <button type="submit">Launch / Başlat</button>
+      </section>
+      <section id="enter" hidden>
+        <h1><label for="password">Local device password / Yerel cihaz parolası</label></h1>
+        <input id="password" type="password" autocomplete="off">
+        <button type="button" id="recover">Use recovery code on a new profile / Yeni profilde kurtarma kodu kullan</button>
+        <button type="submit">Launch / Başlat</button>
+      </section>
+      <p id="error" role="alert"></p>
+    </form>
+    <p id="loading" role="status" hidden>Starting Rai Community… / Rai Community başlatılıyor…</p>
+  </main>
+  <footer><img src="powered_by_holochain.png" width="300" alt="Powered by Holochain"></footer>
+</body>
+</html>
