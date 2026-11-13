@@ -1,0 +1,4 @@
+import{existsSync}from'node:fs';import{resolve,join}from'node:path';
+export const root=resolve(import.meta.dirname,'..');
+export const tooling=process.env.RAI_TOOLING_ROOT??resolve(root,'../../2026-11-clerkship-feedback/code/.tooling');
+export function compilerEnvironment(){const env={...process.env};if(process.platform==='win32'&&existsSync(join(tooling,'cargo/bin/cargo.exe'))){env.CARGO_HOME=join(tooling,'cargo');env.RUSTUP_HOME=join(tooling,'rustup');const bins=join(tooling,'rustup/toolchains/stable-x86_64-pc-windows-gnu/lib/rustlib/x86_64-pc-windows-gnu/bin');env.PATH=[join(tooling,'llvm-bin'),join(tooling,'cargo/bin'),join(bins,'self-contained'),bins,env.PATH].join(';');}env.RUSTFLAGS='--cfg getrandom_backend="custom" -C link-arg=--import-undefined';env.CARGO_TARGET_DIR=join(root,'.build');return env;}

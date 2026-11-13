@@ -1,0 +1,5 @@
+import{spawnSync}from'node:child_process';import{copyFileSync,mkdirSync}from'node:fs';import{join}from'node:path';import{root,tooling,compilerEnvironment}from'./env.mjs';
+const env=compilerEnvironment();function run(cmd,args){const r=spawnSync(cmd,args,{cwd:root,env,stdio:'inherit',windowsHide:true});if(r.error)throw r.error;if(r.status!==0)process.exit(r.status??1);}
+run('cargo',['build','--offline','--locked','--release','--target','wasm32-unknown-unknown','-p','rai_integrity','-p','rai_community']);mkdirSync(join(root,'workdir/zomes'),{recursive:true});for(const name of['rai_integrity','rai_community'])copyFileSync(join(root,'.build/wasm32-unknown-unknown/release',name+'.wasm'),join(root,'workdir/zomes',name+'.wasm'));
+const hc=process.env.HC_PATH??join(tooling,'bin/hc'+(process.platform==='win32'?'.exe':''));run(hc,['dna','pack','workdir']);run(hc,['app','pack','workdir']);
+if(!process.argv.includes('--happ-only')){run(process.execPath,['node_modules/typescript/bin/tsc','--noEmit']);run(process.execPath,['node_modules/vite/bin/vite.js','build']);run(process.execPath,['tools/zip-ui.mjs']);run(hc,['web-app','pack','workdir']);}

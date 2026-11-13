@@ -1,0 +1,1 @@
+import{spawnSync}from'node:child_process';import{compilerEnvironment,root}from'./env.mjs';const r=spawnSync('cargo',process.argv.slice(2),{cwd:root,env:compilerEnvironment(),stdio:'inherit',windowsHide:true});if(r.error)throw r.error;process.exit(r.status??1);
